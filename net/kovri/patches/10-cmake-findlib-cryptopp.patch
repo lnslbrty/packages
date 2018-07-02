@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4792ef4..719b717 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -269,12 +269,13 @@ if(WITH_CRYPTOPP)
+     find_package(CryptoPP REQUIRED)
+   endif()
+ 
+-  if(NOT TARGET CryptoPP::CryptoPP)
+-    message(FATAL_ERROR "Could not find Crypto++. See building instructions.")
+-  else()
+-    target_link_libraries(kovri-private INTERFACE CryptoPP::CryptoPP)
+-    target_compile_definitions(kovri-private INTERFACE WITH_CRYPTOPP)
+-  endif()
++#  if(NOT TARGET CryptoPP::CryptoPP)
++#    message(FATAL_ERROR "Could not find Crypto++. See building instructions.")
++#  else()
++#    target_link_libraries(kovri-private INTERFACE CryptoPP::CryptoPP)
++#    target_compile_definitions(kovri-private INTERFACE WITH_CRYPTOPP)
++#  endif()
++  target_link_libraries(kovri-private INTERFACE cryptopp)
+ endif()
+ 
+ # Despite only cpp-netlib requiring openssl, OSX and ANDROID apparently needs this as well
